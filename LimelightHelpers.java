@@ -1,4 +1,4 @@
-//LimelightHelpers v1.11 (REQUIRES LLOS 2025.0 OR LATER)
+// LimelightHelpers v1.11 (REQUIRES LLOS 2025.0 OR LATER)
 
 package frc.robot;
 
@@ -45,18 +45,38 @@ public class LimelightHelpers {
      */
     public static class LimelightTarget_Retro {
 
+        /**
+         * The limelight's position in the target's space (its location and angle relative to the target,
+         * meaning that the target is the origin).
+         */
         @JsonProperty("t6c_ts")
         private double[] cameraPose_TargetSpace;
 
+        /**
+         * The robot's position in the overall field (its location and angle in field coordinates).
+         */
         @JsonProperty("t6r_fs")
         private double[] robotPose_FieldSpace;
 
+        /**
+         * The robot's position in the target's space (its location and angle relative to the target,
+         * meaning that the target is the origin).
+         * It uses the limelight's configured position to calculate this.
+         */
         @JsonProperty("t6r_ts")
-        private  double[] robotPose_TargetSpace;
+        private double[] robotPose_TargetSpace;
 
+        /**
+         * The target's position in the limelight's view (its location and angle relative to the limelight).
+         * It's just the inverse of cameraPose_TargetSpace.
+         */
         @JsonProperty("t6t_cs")
         private double[] targetPose_CameraSpace;
 
+        /**
+         * The target's position in the robot's space (its location and angle relative to the robot,
+         * meaning that the robot is the origin).
+         */
         @JsonProperty("t6t_rs")
         private double[] targetPose_RobotSpace;
 
@@ -102,27 +122,64 @@ public class LimelightHelpers {
             return toPose2D(targetPose_RobotSpace);
         }
 
+        /**
+         * The area of the target in the limelight's view as a percentage of the total image area.
+         * So, if the target takes up 10% of the image, this value will be 0.1.
+         */
         @JsonProperty("ta")
         public double ta;
 
+        /**
+         * The horizontal offset of the target from the limelight's crosshair in degrees. Positive values 
+         * mean the target is to the right of the crosshair. The bounds of this value depend on the limelight's
+         * horizontal fov.
+         */
         @JsonProperty("tx")
         public double tx;
         
+        /**
+         * The vertical offset of the target from the limelight's crosshair in degrees. Positive values 
+         * mean the target is below the crosshair. The bounds of this value depend on the limelight's
+         * vertical fov.
+         */
         @JsonProperty("ty")
         public double ty;
 
+        /**
+         * The horizontal offset of the target from the limelight's crosshair in pixels. Positive values 
+         * mean the target is to the right of the crosshair. The bounds of this value depend on the limelight's
+         * horizontal resolution.
+         */
         @JsonProperty("txp")
         public double tx_pixels;
 
+        /**
+         * The vertical offset of the target from the limelight's crosshair in pixels. Positive values 
+         * mean the target is below the crosshair. The bounds of this value depend on the limelight's
+         * vertical resolution.
+         */
         @JsonProperty("typ")
         public double ty_pixels;
 
+        /**
+         * The horizontal offset of the target from the limelight's principle pixel in degrees. The principle
+         * pixel is the center of the image, so if your crosshair is aligned with the principle pixel, this value
+         * will be the same as tx.
+         */
         @JsonProperty("tx_nocross")
         public double tx_nocrosshair;
 
+        /**
+         * The vertical offset of the target from the limelight's principle pixel in degrees. The principle
+         * pixel is the center of the image, so if your crosshair is aligned with the principle pixel, this value
+         * will be the same as ty.
+         */
         @JsonProperty("ty_nocross")
         public double ty_nocrosshair;
 
+        /**
+         * The timestamp of the target data in milliseconds since the limelight booted up.
+         */
         @JsonProperty("ts")
         public double ts;
 
