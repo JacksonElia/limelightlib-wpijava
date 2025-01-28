@@ -559,48 +559,96 @@ public class LimelightHelpers {
         
         public String error;
         
+        /**
+         * The pipeline ID that the limelight is currently using.
+         */
         @JsonProperty("pID")
         public double pipelineID;
 
+        /**
+         * The latency of the limelight's image processing pipeline in milliseconds.
+         */
         @JsonProperty("tl")
         public double latency_pipeline;
 
+        /**
+         * The latency of the limelight's image capture in milliseconds.
+         */
         @JsonProperty("cl")
         public double latency_capture;
 
+        /**
+         * The latency of how long JSON parsing took in milliseconds.
+         */
         public double latency_jsonParse;
 
+        /**
+         * The timestamp of the limelight's data in milliseconds since the limelight booted up.
+         */
         @JsonProperty("ts")
         public double timestamp_LIMELIGHT_publish;
 
         @JsonProperty("ts_rio")
         public double timestamp_RIOFPGA_capture;
 
+        /**
+         * The validity indicator. 1 = valid targets, 0 = no valid targets
+         */
         @JsonProperty("v")
         @JsonFormat(shape = Shape.NUMBER)
         public boolean valid;
 
+        /**
+         * The MegaTag1 pose estimate from the limelight. It's in an array of 6 values: 
+         * [x, y, z, roll, pitch, yaw] (meters, degrees).
+         */
         @JsonProperty("botpose")
         public double[] botpose;
 
+        /**
+         * The MegaTag1 pose estimate from the limelight from the red alliance's perspective. The
+         * origin is the bottom right corner of the field. It's in an array of 6 values: [x, y, z, 
+         * roll, pitch, yaw] (meters, degrees).
+         */
         @JsonProperty("botpose_wpired")
         public double[] botpose_wpired;
 
+        /**
+         * The MegaTag1 pose estimate from the limelight from the blue alliance's perspective. The
+         * origin is the bottom left corner of the field. It's in an array of 6 values: [x, y, z, 
+         * roll, pitch, yaw] (meters, degrees).
+         */
         @JsonProperty("botpose_wpiblue")
         public double[] botpose_wpiblue;
 
+        /**
+         * The number of april tags used to calculate the MegaTag1 pose estimate.
+         */
         @JsonProperty("botpose_tagcount")
         public double botpose_tagcount;
        
+        /**
+         * The max distance, in meters, between april tags used to calculate the MegaTag1 pose estimate.
+         */
         @JsonProperty("botpose_span")
         public double botpose_span;
        
+        /**
+         * The average distance, in meters, between april tags used to calculate the MegaTag1 pose estimate.
+         */
         @JsonProperty("botpose_avgdist")
         public double botpose_avgdist;
        
+        /**
+         * The average area, in meters squared, of april tags used to calculate the MegaTag1 pose estimate.
+         */
         @JsonProperty("botpose_avgarea")
         public double botpose_avgarea;
 
+        /**
+         * The limelight's position in the robot's space (its location and angle relative to the robot,
+         * meaning that the robot is the origin).
+         */
         @JsonProperty("t6c_rs")
         public double[] camerapose_robotspace;
 
@@ -628,18 +676,33 @@ public class LimelightHelpers {
             return toPose2D(botpose_wpiblue);
         }
 
+        /**
+         * An array of Retroreflective Target results from the limelight.
+         */
         @JsonProperty("Retro")
         public LimelightTarget_Retro[] targets_Retro;
 
+        /**
+         * An array of Fiducial Target (april tag) results from the limelight.
+         */
         @JsonProperty("Fiducial")
         public LimelightTarget_Fiducial[] targets_Fiducials;
 
+        /**
+         * An array of Classifier Target results from the limelight.
+         */
         @JsonProperty("Classifier")
         public LimelightTarget_Classifier[] targets_Classifier;
 
+        /**
+         * An array of Detector Target results from the limelight.
+         */
         @JsonProperty("Detector")
         public LimelightTarget_Detector[] targets_Detector;
 
+        /**
+         * An array of Barcode Target results from the limelight.
+         */
         @JsonProperty("Barcode")
         public LimelightTarget_Barcode[] targets_Barcode;
 
@@ -653,9 +716,7 @@ public class LimelightHelpers {
             targets_Classifier = new LimelightTarget_Classifier[0];
             targets_Detector = new LimelightTarget_Detector[0];
             targets_Barcode = new LimelightTarget_Barcode[0];
-
         }
-
 
     }
 
@@ -663,14 +724,26 @@ public class LimelightHelpers {
      * Represents a Limelight Raw Fiducial result from Limelight's NetworkTables output.
      */
     public static class RawFiducial {
+        /** The id of the april tag */
         public int id = 0;
+        /** 
+         * The horizontal offset of the target from the limelight's principle pixel (the images central pixel) in degrees. 
+         * Positive values mean the target is to the right of the crosshair.
+         */
         public double txnc = 0;
+        /** 
+         * The vertical offset of the target from the limelight's principle pixel (the images central pixel) in degrees. 
+         * Positive values mean the target is below the crosshair.
+         */
         public double tync = 0;
+        /** The area of the target in the limelight's view as a percentage of the total image area. */
         public double ta = 0;
+        /** The distance from the limelight to the april tag in meters. */
         public double distToCamera = 0;
+        /** The distance from the robot to the april tag in meters. */
         public double distToRobot = 0;
+        /** The ambiguity of the april tag. This ranges from 0 to 1, a lower values meaning less ambiguous. */
         public double ambiguity = 0;
-
 
         public RawFiducial(int id, double txnc, double tync, double ta, double distToCamera, double distToRobot, double ambiguity) {
             this.id = id;
@@ -725,15 +798,41 @@ public class LimelightHelpers {
      * Represents a 3D Pose Estimate.
      */
     public static class PoseEstimate {
+        /** 
+         * The estimated 2D pose of the robot, including position and rotation.
+         */
         public Pose2d pose;
+        /** 
+         * The timestamp of the pose estimate in seconds since the limelight booted up.
+         */
         public double timestampSeconds;
+        /** 
+         * The latency of the pose estimate in milliseconds.
+         */
         public double latency;
+        /** 
+         * The number of april tags used to calculate the pose estimate.
+         */
         public int tagCount;
+        /** 
+         * The max distance, in meters, between april tags used to calculate the pose estimate.
+         */
         public double tagSpan;
+        /** 
+         * The average distance, in meters, between april tags used to calculate the pose estimate.
+         */
         public double avgTagDist;
+        /** 
+         * The average area, in meters squared, of april tags used to calculate the pose estimate.
+         */
         public double avgTagArea;
-
-        public RawFiducial[] rawFiducials; 
+        /** 
+         * An array of RawFiducial used to calculate the pose estimate.
+         */
+        public RawFiducial[] rawFiducials;
+        /**
+         * true if the pose estimate is calculated using MegaTag2, false if using MegaTag1.
+         */
         public boolean isMegaTag2;
 
         /**
