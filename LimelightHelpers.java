@@ -46,7 +46,7 @@ public class LimelightHelpers {
     public static class LimelightTarget_Retro {
 
         /**
-         * The limelight's position in the target's space (its location and angle relative to the target,
+         * The Limelight's position in the target's space (its location and angle relative to the target,
          * meaning that the target is the origin).
          */
         @JsonProperty("t6c_ts")
@@ -60,14 +60,13 @@ public class LimelightHelpers {
 
         /**
          * The robot's position in the target's space (its location and angle relative to the target,
-         * meaning that the target is the origin).
-         * It uses the limelight's configured position to calculate this.
+         * meaning that the target is the origin). It uses the Limelight's configured position to calculate this.
          */
         @JsonProperty("t6r_ts")
         private double[] robotPose_TargetSpace;
 
         /**
-         * The target's position in the limelight's view (its location and angle relative to the limelight).
+         * The target's position in the Limelight's view (its location and angle relative to the Limelight).
          * It's just the inverse of cameraPose_TargetSpace.
          */
         @JsonProperty("t6t_cs")
@@ -123,46 +122,46 @@ public class LimelightHelpers {
         }
 
         /**
-         * The area of the target in the limelight's view as a percentage of the total image area.
+         * The area of the target in the Limelight's view as a percentage of the total image area.
          * So, if the target takes up 10% of the image, this value will be 0.1.
          */
         @JsonProperty("ta")
         public double ta;
 
         /**
-         * The horizontal offset of the target from the limelight's crosshair in degrees. Positive values 
-         * mean the target is to the right of the crosshair. The bounds of this value depend on the limelight's
+         * The horizontal offset of the target from the Limelight's crosshair in degrees. Positive values 
+         * mean the target is to the right of the crosshair. The bounds of this value depend on the Limelight's
          * horizontal fov.
          */
         @JsonProperty("tx")
         public double tx;
         
         /**
-         * The vertical offset of the target from the limelight's crosshair in degrees. Positive values 
-         * mean the target is below the crosshair. The bounds of this value depend on the limelight's
+         * The vertical offset of the target from the Limelight's crosshair in degrees. Positive values 
+         * mean the target is below the crosshair. The bounds of this value depend on the Limelight's
          * vertical fov.
          */
         @JsonProperty("ty")
         public double ty;
 
         /**
-         * The horizontal offset of the target from the limelight's crosshair in pixels. Positive values 
-         * mean the target is to the right of the crosshair. The bounds of this value depend on the limelight's
+         * The horizontal offset of the target from the Limelight's crosshair in pixels. Positive values 
+         * mean the target is to the right of the crosshair. The bounds of this value depend on the Limelight's
          * horizontal resolution.
          */
         @JsonProperty("txp")
         public double tx_pixels;
 
         /**
-         * The vertical offset of the target from the limelight's crosshair in pixels. Positive values 
-         * mean the target is below the crosshair. The bounds of this value depend on the limelight's
+         * The vertical offset of the target from the Limelight's crosshair in pixels. Positive values 
+         * mean the target is below the crosshair. The bounds of this value depend on the Limelight's
          * vertical resolution.
          */
         @JsonProperty("typ")
         public double ty_pixels;
 
         /**
-         * The horizontal offset of the target from the limelight's principle pixel in degrees. The principle
+         * The horizontal offset of the target from the Limelight's principle pixel in degrees. The principle
          * pixel is the center of the image, so if your crosshair is aligned with the principle pixel, this value
          * will be the same as tx.
          */
@@ -170,7 +169,7 @@ public class LimelightHelpers {
         public double tx_nocrosshair;
 
         /**
-         * The vertical offset of the target from the limelight's principle pixel in degrees. The principle
+         * The vertical offset of the target from the Limelight's principle pixel in degrees. The principle
          * pixel is the center of the image, so if your crosshair is aligned with the principle pixel, this value
          * will be the same as ty.
          */
@@ -178,7 +177,7 @@ public class LimelightHelpers {
         public double ty_nocrosshair;
 
         /**
-         * The timestamp of the target data in milliseconds since the limelight booted up.
+         * The timestamp of the target data in milliseconds since the Limelight booted up.
          */
         @JsonProperty("ts")
         public double ts;
@@ -199,7 +198,8 @@ public class LimelightHelpers {
     public static class LimelightTarget_Fiducial {
 
         /**
-         * The ID of the fiducial target. This is a unique identifier for the target.
+         * The ID of the fiducial target (april tag). This is a unique identifier for the target.
+         * For the 2025 FRC season they will range from 1-22.
          */
         @JsonProperty("fID")
         public double fiducialID;
@@ -211,7 +211,7 @@ public class LimelightHelpers {
         public String fiducialFamily;
 
         /**
-         * The limelight's position in the target's space (its location and angle relative to the target,
+         * The Limelight's position in the target's space (its location and angle relative to the target,
          * meaning that the april tag is the origin).
          */
         @JsonProperty("t6c_ts")
@@ -226,13 +226,13 @@ public class LimelightHelpers {
         /**
          * The robot's position in the target's space (its location and angle relative to the target,
          * meaning that the april tag is the origin).
-         * It uses the limelight's configured position to calculate this.
+         * It uses the Limelight's configured position to calculate this.
          */
         @JsonProperty("t6r_ts")
         private double[] robotPose_TargetSpace;
 
         /**
-         * The target's position in the limelight's view (its location and angle relative to the limelight).
+         * The target's position in the Limelight's view (its location and angle relative to the Limelight).
          * It's just the inverse of cameraPose_TargetSpace.
          */
         @JsonProperty("t6t_cs")
@@ -288,46 +288,46 @@ public class LimelightHelpers {
         }
         
         /**
-         * The area of the april tag in the limelight's view as a percentage of the total image area.
+         * The area of the april tag in the Limelight's view as a percentage of the total image area.
          * So, if the april tag takes up 10% of the image, this value will be 0.1.
          */
         @JsonProperty("ta")
         public double ta;
 
         /**
-         * The horizontal offset of the april tag from the limelight's crosshair in degrees. Positive values 
-         * mean the april tag is to the right of the crosshair. The bounds of this value depend on the limelight's
+         * The horizontal offset of the april tag from the Limelight's crosshair in degrees. Positive values 
+         * mean the april tag is to the right of the crosshair. The bounds of this value depend on the Limelight's
          * horizontal fov.
          */
         @JsonProperty("tx")
         public double tx;
 
         /**
-         * The vertical offset of the april tag from the limelight's crosshair in degrees. Positive values 
-         * mean the april tag is below the crosshair. The bounds of this value depend on the limelight's
+         * The vertical offset of the april tag from the Limelight's crosshair in degrees. Positive values 
+         * mean the april tag is below the crosshair. The bounds of this value depend on the Limelight's
          * vertical fov.
          */
         @JsonProperty("ty")
         public double ty;
 
         /**
-         * The horizontal offset of the april tag from the limelight's crosshair in pixels. Positive values 
-         * mean the april tag is to the right of the crosshair. The bounds of this value depend on the limelight's
+         * The horizontal offset of the april tag from the Limelight's crosshair in pixels. Positive values 
+         * mean the april tag is to the right of the crosshair. The bounds of this value depend on the Limelight's
          * horizontal resolution.
          */
         @JsonProperty("txp")
         public double tx_pixels;
 
         /**
-         * The vertical offset of the april tag from the limelight's crosshair in pixels. Positive values 
-         * mean the april tag is below the crosshair. The bounds of this value depend on the limelight's
+         * The vertical offset of the april tag from the Limelight's crosshair in pixels. Positive values 
+         * mean the april tag is below the crosshair. The bounds of this value depend on the Limelight's
          * vertical resolution.
          */
         @JsonProperty("typ")
         public double ty_pixels;
 
         /**
-         * The horizontal offset of the april tag from the limelight's principle pixel in degrees. The principle
+         * The horizontal offset of the april tag from the Limelight's principle pixel in degrees. The principle
          * pixel is the center of the image, so if your crosshair is aligned with the principle pixel, this value
          * will be the same as tx.
          */
@@ -335,7 +335,7 @@ public class LimelightHelpers {
         public double tx_nocrosshair;
 
         /**
-         * The vertical offset of the april tag from the limelight's principle pixel in degrees. The principle
+         * The vertical offset of the april tag from the Limelight's principle pixel in degrees. The principle
          * pixel is the center of the image, so if your crosshair is aligned with the principle pixel, this value
          * will be the same as ty.
          */
@@ -343,7 +343,7 @@ public class LimelightHelpers {
         public double ty_nocrosshair;
 
         /**
-         * The timestamp of the april tag data in milliseconds since the limelight booted up.
+         * The timestamp of the april tag data in milliseconds since the Limelight booted up.
          */
         @JsonProperty("ts")
         public double ts;
@@ -436,32 +436,32 @@ public class LimelightHelpers {
         public double zone;
 
         /**
-         * The horizontal offset of the classified object from the limelight's crosshair in degrees. Positive values 
-         * mean the object is to the right of the crosshair. The bounds of this value depend on the limelight's
+         * The horizontal offset of the classified object from the Limelight's crosshair in degrees. Positive values 
+         * mean the object is to the right of the crosshair. The bounds of this value depend on the Limelight's
          * horizontal fov.
          */
         @JsonProperty("tx")
         public double tx;
 
         /**
-         * The horizontal offset of the classified object from the limelight's crosshair in pixels. Positive values 
-         * mean the object is to the right of the crosshair. The bounds of this value depend on the limelight's
+         * The horizontal offset of the classified object from the Limelight's crosshair in pixels. Positive values 
+         * mean the object is to the right of the crosshair. The bounds of this value depend on the Limelight's
          * horizontal resolution.
          */
         @JsonProperty("txp")
         public double tx_pixels;
 
         /**
-         * The vertical offset of the classified object from the limelight's crosshair in degrees. Positive values 
-         * mean the object is below the crosshair. The bounds of this value depend on the limelight's
+         * The vertical offset of the classified object from the Limelight's crosshair in degrees. Positive values 
+         * mean the object is below the crosshair. The bounds of this value depend on the Limelight's
          * vertical fov.
          */
         @JsonProperty("ty")
         public double ty;
 
         /**
-         * The vertical offset of the classified object from the limelight's crosshair in pixels. Positive values 
-         * mean the object is below the crosshair. The bounds of this value depend on the limelight's
+         * The vertical offset of the classified object from the Limelight's crosshair in pixels. Positive values 
+         * mean the object is below the crosshair. The bounds of this value depend on the Limelight's
          * vertical resolution.
          */
         @JsonProperty("typ")
@@ -494,7 +494,7 @@ public class LimelightHelpers {
         public double confidence;
 
         /**
-         * The area of the detected object in the limelight's view as a percentage of the total image area.
+         * The area of the detected object in the Limelight's view as a percentage of the total image area.
          * So, if the object takes up 10% of the image, this value will be 0.1. This is very helpful for
          * estimating distance to the object based on its size.
          */
@@ -502,39 +502,39 @@ public class LimelightHelpers {
         public double ta;
 
         /**
-         * The horizontal offset of the detected object from the limelight's crosshair in degrees. Positive values 
-         * mean the object is to the right of the crosshair. The bounds of this value depend on the limelight's
+         * The horizontal offset of the detected object from the Limelight's crosshair in degrees. Positive values 
+         * mean the object is to the right of the crosshair. The bounds of this value depend on the Limelight's
          * horizontal fov.
          */
         @JsonProperty("tx")
         public double tx;
 
         /**
-         * The vertical offset of the detected object from the limelight's crosshair in degrees. Positive values 
-         * mean the object is below the crosshair. The bounds of this value depend on the limelight's
+         * The vertical offset of the detected object from the Limelight's crosshair in degrees. Positive values 
+         * mean the object is below the crosshair. The bounds of this value depend on the Limelight's
          * vertical fov.
          */
         @JsonProperty("ty")
         public double ty;
 
         /**
-         * The horizontal offset of the detected object from the limelight's crosshair in pixels. Positive values 
-         * mean the object is to the right of the crosshair. The bounds of this value depend on the limelight's
+         * The horizontal offset of the detected object from the Limelight's crosshair in pixels. Positive values 
+         * mean the object is to the right of the crosshair. The bounds of this value depend on the Limelight's
          * horizontal resolution.
          */
         @JsonProperty("txp")
         public double tx_pixels;
 
         /**
-         * The vertical offset of the detected object from the limelight's crosshair in pixels. Positive values 
-         * mean the object is below the crosshair. The bounds of this value depend on the limelight's
+         * The vertical offset of the detected object from the Limelight's crosshair in pixels. Positive values 
+         * mean the object is below the crosshair. The bounds of this value depend on the Limelight's
          * vertical resolution.
          */
         @JsonProperty("typ")
         public double ty_pixels;
 
         /**
-         * The horizontal offset of the detected object from the limelight's principle pixel in degrees. The principle
+         * The horizontal offset of the detected object from the Limelight's principle pixel in degrees. The principle
          * pixel is the center of the image, so if your crosshair is aligned with the principle pixel, this value
          * will be the same as tx.
          */
@@ -542,7 +542,7 @@ public class LimelightHelpers {
         public double tx_nocrosshair;
 
         /**
-         * The vertical offset of the detected object from the limelight's principle pixel in degrees. The principle
+         * The vertical offset of the detected object from the Limelight's principle pixel in degrees. The principle
          * pixel is the center of the image, so if your crosshair is aligned with the principle pixel, this value
          * will be the same as ty.
          */
@@ -557,22 +557,25 @@ public class LimelightHelpers {
      */
     public static class LimelightResults {
         
+        /**
+         * The error message (if any) associated with getting the LimelightResults
+         */
         public String error;
         
         /**
-         * The pipeline ID that the limelight is currently using.
+         * The pipeline ID that the Limelight is currently using.
          */
         @JsonProperty("pID")
         public double pipelineID;
 
         /**
-         * The latency of the limelight's image processing pipeline in milliseconds.
+         * The latency of the Limelight's image processing pipeline in milliseconds.
          */
         @JsonProperty("tl")
         public double latency_pipeline;
 
         /**
-         * The latency of the limelight's image capture in milliseconds.
+         * The latency of the Limelight's image capture in milliseconds.
          */
         @JsonProperty("cl")
         public double latency_capture;
@@ -583,11 +586,15 @@ public class LimelightHelpers {
         public double latency_jsonParse;
 
         /**
-         * The timestamp of the limelight's data in milliseconds since the limelight booted up.
+         * The timestamp of the Limelight's data in milliseconds since the Limelight booted up.
          */
         @JsonProperty("ts")
         public double timestamp_LIMELIGHT_publish;
 
+        /**
+         * The timestamp of the image capture event, synchronized to the RoboRIO's FPGA clock (seconds).
+         * Uses the same time base as `Timer.getFPGATimestamp()`.
+         */
         @JsonProperty("ts_rio")
         public double timestamp_RIOFPGA_capture;
 
@@ -599,14 +606,14 @@ public class LimelightHelpers {
         public boolean valid;
 
         /**
-         * The MegaTag1 pose estimate from the limelight. It's in an array of 6 values: 
+         * The MegaTag1 pose estimate from the Limelight. It's in an array of 6 values: 
          * [x, y, z, roll, pitch, yaw] (meters, degrees).
          */
         @JsonProperty("botpose")
         public double[] botpose;
 
         /**
-         * The MegaTag1 pose estimate from the limelight from the red alliance's perspective. The
+         * The MegaTag1 pose estimate from the Limelight from the red alliance's perspective. The
          * origin is the bottom right corner of the field. It's in an array of 6 values: [x, y, z, 
          * roll, pitch, yaw] (meters, degrees).
          */
@@ -614,7 +621,7 @@ public class LimelightHelpers {
         public double[] botpose_wpired;
 
         /**
-         * The MegaTag1 pose estimate from the limelight from the blue alliance's perspective. The
+         * The MegaTag1 pose estimate from the Limelight from the blue alliance's perspective. The
          * origin is the bottom left corner of the field. It's in an array of 6 values: [x, y, z, 
          * roll, pitch, yaw] (meters, degrees).
          */
@@ -634,7 +641,8 @@ public class LimelightHelpers {
         public double botpose_span;
        
         /**
-         * The average distance, in meters, between april tags used to calculate the MegaTag1 pose estimate.
+         * The average distance, in meters, between the Limelight and the april tags used to calculate 
+         * the MegaTag1 pose estimate.
          */
         @JsonProperty("botpose_avgdist")
         public double botpose_avgdist;
@@ -646,7 +654,7 @@ public class LimelightHelpers {
         public double botpose_avgarea;
 
         /**
-         * The limelight's position in the robot's space (its location and angle relative to the robot,
+         * The Limelight's position in the robot's space (its location and angle relative to the robot,
          * meaning that the robot is the origin).
          */
         @JsonProperty("t6c_rs")
@@ -677,31 +685,31 @@ public class LimelightHelpers {
         }
 
         /**
-         * An array of Retroreflective Target results from the limelight.
+         * An array of Retroreflective Target results from the Limelight.
          */
         @JsonProperty("Retro")
         public LimelightTarget_Retro[] targets_Retro;
 
         /**
-         * An array of Fiducial Target (april tag) results from the limelight.
+         * An array of Fiducial Target (april tag) results from the Limelight.
          */
         @JsonProperty("Fiducial")
         public LimelightTarget_Fiducial[] targets_Fiducials;
 
         /**
-         * An array of Classifier Target results from the limelight.
+         * An array of Classifier Target results from the Limelight.
          */
         @JsonProperty("Classifier")
         public LimelightTarget_Classifier[] targets_Classifier;
 
         /**
-         * An array of Detector Target results from the limelight.
+         * An array of Detector Target results from the Limelight.
          */
         @JsonProperty("Detector")
         public LimelightTarget_Detector[] targets_Detector;
 
         /**
-         * An array of Barcode Target results from the limelight.
+         * An array of Barcode Target results from the Limelight.
          */
         @JsonProperty("Barcode")
         public LimelightTarget_Barcode[] targets_Barcode;
@@ -727,22 +735,31 @@ public class LimelightHelpers {
         /** The id of the april tag */
         public int id = 0;
         /** 
-         * The horizontal offset of the target from the limelight's principle pixel (the images central pixel) in degrees. 
+         * The horizontal offset of the target from the Limelight's principle pixel (the images central pixel) in degrees. 
          * Positive values mean the target is to the right of the crosshair.
          */
         public double txnc = 0;
         /** 
-         * The vertical offset of the target from the limelight's principle pixel (the images central pixel) in degrees. 
+         * The vertical offset of the target from the Limelight's principle pixel (the images central pixel) in degrees. 
          * Positive values mean the target is below the crosshair.
          */
         public double tync = 0;
-        /** The area of the target in the limelight's view as a percentage of the total image area. */
+        /** 
+         * The area of the target in the Limelight's view as a percentage of the total image area.
+         * So, if the target takes up 10% of the image, this value will be 0.1.
+         */
         public double ta = 0;
-        /** The distance from the limelight to the april tag in meters. */
+        /** The distance from the Limelight to the april tag in meters. */
         public double distToCamera = 0;
         /** The distance from the robot to the april tag in meters. */
         public double distToRobot = 0;
-        /** The ambiguity of the april tag. This ranges from 0 to 1, a lower values meaning less ambiguous. */
+        /** 
+         * The ambiguity of the april tag. This ranges from 0 to 1, a lower values meaning less ambiguous. The
+         * higher this is, the more likely it is that you will see ambiguity flipping. Ambiguity flipping is when
+         * there are multiple possible "solutions" for the pose estimate, so if this is higher your estimate will
+         * be less reliable. The best way to reduce this it to make the april tag look as trapezoidal as possible
+         * from the Limelight's perspective. 
+         */
         public double ambiguity = 0;
 
         public RawFiducial(int id, double txnc, double tync, double ta, double distToCamera, double distToRobot, double ambiguity) {
@@ -803,7 +820,7 @@ public class LimelightHelpers {
          */
         public Pose2d pose;
         /** 
-         * The timestamp of the pose estimate in seconds since the limelight booted up.
+         * The timestamp of the pose estimate in seconds since the Limelight booted up.
          */
         public double timestampSeconds;
         /** 
@@ -819,7 +836,8 @@ public class LimelightHelpers {
          */
         public double tagSpan;
         /** 
-         * The average distance, in meters, between april tags used to calculate the pose estimate.
+         * The average distance, in meters, between the Limelight and the april tags used to calculate 
+         * the pose estimate.
          */
         public double avgTagDist;
         /** 
